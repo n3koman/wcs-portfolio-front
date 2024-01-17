@@ -126,19 +126,5 @@ async function deleteAssign(assignId) {
   }
 }
 
-async function fetchAssignments() {
-  const response = await fetch(`${baseUrl}/api/assignments`);
-  const assignments = await response.json();
-  const assignmentList = document.getElementById('assignmentList');
-
-  assignmentList.innerHTML = ''; // Clear existing content
-
-  assignments.forEach(assign => {
-      const listItem = document.createElement('li');
-      listItem.textContent = `ID: ${assign.id}, Title: ${assign.title}, Content: ${assign.content}, Video: ${assign.isvideo ? 'Yes' : 'No'}`;
-      assignmentList.appendChild(listItem);
-  });
-}
-
 // Fetch and display existing assigns when the page loads
 window.onload = getExistingAssigns;
