@@ -21,19 +21,6 @@ async function createAssign() {
   getExistingAssigns();
 }
 
-async function updateAssignModal(assignId) {
-  const response = await fetch(`${baseUrl}/assigns/${assignId}`);
-  const assign = await response.json();
-
-  document.getElementById("updateAssignId").value = assign.id;
-  document.getElementById("updateTitle").value = assign.title;
-  document.getElementById("updateContent").value = assign.content;
-  document.getElementById("updateType").checked = assign.isvideo;
-
-  // Open the update assignment modal
-  $("#updateAssignModal").modal("show");
-}
-
 async function updateAssign() {
   const assignId = document.getElementById("updateAssignId").value;
   const newTitle = document.getElementById("updateTitle").value;
@@ -41,28 +28,27 @@ async function updateAssign() {
   const newType = document.getElementById("updateType").checked;
 
   const response = await fetch(`${baseUrl}/assigns/${assignId}`, {
-      method: "PUT",
-      headers: {
-          "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-          title: newTitle,
-          content: newContent,
-          isvideo: newType,
-      }),
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      title: newTitle,
+      content: newContent,
+      isvideo: newType,
+    }),
   });
 
   if (response.ok) {
-      const data = await response.json();
-      alert("Assignment updated successfully!");
-      console.log(data);
+    const data = await response.json();
+    alert("Assignment updated successfully!");
+    console.log(data);
 
-      // You can update the UI to reflect the updated assignment if needed
-      getExistingAssigns();
-      $("#updateAssignModal").modal("hide"); // Close the modal after updating
+    // You can update the UI to reflect the updated assignment if needed
+    getExistingAssigns();
   } else {
-      const errorData = await response.json();
-      alert(`Failed to update assignment: ${errorData.detail}`);
+    const errorData = await response.json();
+    alert(`Failed to update assignment: ${errorData.detail}`);
   }
 }
 
