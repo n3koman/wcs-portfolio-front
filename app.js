@@ -71,7 +71,7 @@ async function getExistingAssigns() {
                         <span class="card-text">${assign.id}</span>
                         <h5 class="card-title">${assign.title}</h5>
                         <h5 class="card-title">${videoId}</h5>  
-                        <iframe width="560" height="400" src="https://youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
                         <p class="card-text"><small class="text-muted">Last updated: ${assign.time}</small></p>
                         <button class="btn btn-danger" onclick="deleteAssign(${assign.id})">Delete Assignment</button>
                     </div>
