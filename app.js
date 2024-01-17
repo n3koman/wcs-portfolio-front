@@ -3,29 +3,39 @@ const baseUrl = "https://wcs-alisher-izmukhan.koyeb.app"; // Update this with yo
 async function createAssign() {
   const title = document.getElementById("title").value;
   const content = document.getElementById("content").value;
-  const isvideo = document.getElementById("type").checked;
+  const videoContent = document.getElementById("videoContent").value;
 
   const response = await fetch(`${baseUrl}/assigns`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ title, content, isvideo }),
+    body: JSON.stringify({ title, content, videoContent }),
   });
 
   const data = await response.json();
   alert("Assignment created successfully!");
-  console.log(data);
 
   // You can update the UI to display the new assignment if needed
   getExistingAssigns();
+}
+
+function updateFormValues(id, title, content, videoContent){
+  const idField = document.getElementById("updateAssignId");
+  const titleField = document.getElementById("updateTitle");
+  const contentField = document.getElementById("updateContent");
+  const videoContentField = document.getElementById("updateVideoContent");
+  idField.value = id;
+  titleField.value = title;
+  contentField.value = content;
+  videoContentField.value = videoContent;
 }
 
 async function updateAssign() {
   const assignId = document.getElementById("updateAssignId").value;
   const newTitle = document.getElementById("updateTitle").value;
   const newContent = document.getElementById("updateContent").value;
-  const newType = document.getElementById("updateType").checked;
+  const newVideoContent = document.getElementById("updateVideoContent").value;
 
   const response = await fetch(`${baseUrl}/assigns/${assignId}`, {
     method: "PUT",
@@ -35,7 +45,7 @@ async function updateAssign() {
     body: JSON.stringify({
       title: newTitle,
       content: newContent,
-      isvideo: newType,
+      videoContent: newVideoContent,
     }),
   });
 
@@ -62,16 +72,17 @@ async function getExistingAssigns() {
   assigns.forEach((assign) => {
     const cardDiv = document.createElement("div");
     cardDiv.className = "col";
-
-    if (assign.isvideo == true) {
-      const videoId = getYouTubeVideoId(assign.content);
+    if (assign.videoContent != '') {
+      const videoId = getYouTubeVideoId(assign.videoContent);
       cardDiv.innerHTML = `
                 <div class="card">
                     <div class="card-body">
                         <span class="card-text">${assign.id}</span>
                         <h5 class="card-title">${assign.title}</h5>
+                        <p class="card-text">${assign.content}</p>
                         <iframe width="560" height="315" src="https://youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
                         <p class="card-text"><small class="text-muted">Last updated: ${assign.time}</small></p>
+                        <button type="button" onclick="updateFormValues(${assign.id}, '${assign.title}', '${assign.content}', '${assign.videoContent}')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateAssignModal">Update Assignment</button>
                         <button class="btn btn-danger" onclick="deleteAssign(${assign.id})">Delete Assignment</button>
                     </div>
                 </div>`;
@@ -83,6 +94,7 @@ async function getExistingAssigns() {
                         <h5 class="card-title">${assign.title}</h5>
                         <p class="card-text">${assign.content}</p>
                         <p class="card-text"><small class="text-muted">Last updated: ${assign.time}</small></p>
+                        <button type="button" onclick="updateFormValues(${assign.id}, '${assign.title}', '${assign.content}', '${assign.videoContent}')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateAssignModal">Update Assignment</button>
                         <button class="btn btn-danger" onclick="deleteAssign(${assign.id})">Delete Assignment</button>
                     </div>
                 </div>`;

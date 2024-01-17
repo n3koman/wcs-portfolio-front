@@ -57,12 +57,13 @@
               />
               <br />
 
-              <label for="type">Video:</label>
+              <label for="content">videoContent:</label>
               <input
-                type="checkbox"
-                id="type"
-                name="type"
-                class="form-check-input"
+                type="text"
+                id="videoContent"
+                name="videoContent"
+                class="form-control"
+                required
               />
               <br />
 
@@ -102,9 +103,8 @@
           </div>
           <div class="modal-body">
             <form id="updateAssignForm">
-              <label for="updateAssignId">Assignment ID:</label>
               <input
-                type="number"
+                type="hidden"
                 id="updateAssignId"
                 name="updateAssignId"
                 class="form-control"
@@ -130,12 +130,12 @@
               />
               <br />
 
-              <label for="updateType">Video:</label>
+              <label for="updateVideoContent">Video:</label>
               <input
-                type="checkbox"
-                id="updateType"
-                name="updateType"
-                class="form-check-input"
+                type="text"
+                id="updateVideoContent"
+                name="updateVideoContent"
+                class="form-control"
               />
               <br />
 
@@ -163,15 +163,6 @@
         data-bs-target="#createAssignModal"
       >
         Create Assignment
-      </button>
-
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#updateAssignModal"
-      >
-        Update Assignment
       </button>
     </div>
 
