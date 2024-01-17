@@ -29,6 +29,7 @@ function updateFormValues(id, title, content, videoContent){
   titleField.value = title;
   contentField.value = content;
   videoContentField.value = videoContent;
+  updateQuillSet(content);
 }
 
 async function updateAssign() {
