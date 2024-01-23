@@ -3,51 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alisher Izmukhan - Digital Portfolio</title>
+    <title>Alisher Izmukhan</title>
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <header>
-      <h1>Alisher Izmukhan</h1>
-      <p>Web Developer | Student</p>
-    </header>
-    <!-- <a href="test.html">
-      <button>Go to Test Page</button>
-    </a> -->
-    <section>
-      <h2>About Me</h2>
-      <p>Need to write something</p>
-    </section>
-
-    <section>
-      <h2>My Work</h2>
-      <!-- Add your project details here -->
-      <ul>
-        <a href="assignments.html">
-          <button>Go to Assignments Page</button>
-        </a>
-        <!-- Add more projects as needed -->
+    <section class="banner">
+      <header>
+        <a href="#" class="logo">Alisher<span>Izmukhan</span></a>
+        <div class="toggle"></div>
+      </header>
+      <img src="me.png" class="me">
+      <div class="content">
+        <div class="contentBx">
+          <h4>Hello,</h4>
+          <h2>I'm <span>Alisher Izmukhan</span></h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed delectus repellendus qui hic placeat vero corporis nostrum, labore ratione atque accusantium officiis reiciendis dolorem earum sit ipsam optio numquam natus?</p>
+          <a href="https://www.linkedin.com/in/alisher-izmukhan-b754b2224/" target="_blank">Linkedin</a>
+          <a href="https://github.com/n3koman" target="_blank">GitHub</a>
+        </div>
+      </div>
+      <ul class="menu">
+        <li><a href="assignments.html">Assignments</a></li>
+        <li><a href="#">About me</a></li>
       </ul>
     </section>
-
-    <section>
-      <h2>Contact Me</h2>
-      <p>
-        Feel free to reach out to me. You can find me on
-        <a
-          href="https://www.linkedin.com/in/alisher-izmukhan-b754b2224/"
-          target="_blank"
-          >LinkedIn</a
-        >
-        or send me an email at
-        <a href="mailto:alisher.izmukhan@nu.edu.kz"
-          >alisher.izmukhan@nu.edu.kz</a
-        >.
-      </p>
-      <p>
-        my GitHub
-        <a href="https://github.com/n3koman" target="_blank">Github</a>
-      </p>
-    </section>
+    <script>
+      let banner = document.querySelector('.banner');
+      let menutoggle = document.querySelector('.toggle');
+      menutoggle.onclick = function(){
+        menutoggle.classList.toggle('active');
+        banner.classList.toggle('active');
+      }
+    </script>
   </body>
 </html>
