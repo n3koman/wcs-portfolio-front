@@ -14,13 +14,41 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 10000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 100px;
-  background: var(--white);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 30px 100px;
+  background: var(--black);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
-
- 
+header .logo {
+  font-size: 1.5em;
+  color: #fff;
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: 0.5s;
+  transform-origin: left;
+}
+header .logo span {
+  color: #1de5ff;
+  border-bottom: 4px solid #1de5ff;
+}
+header .toggle {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: url(menu.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px;
+  cursor: pointer;
+}
+header .toggle.active {
+  background: url(close.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px;
+}
