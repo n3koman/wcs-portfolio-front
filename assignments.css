@@ -52,3 +52,8 @@ header .toggle.active {
   background-position: center;
   background-size: 30px;
 }
+img
+{
+  max-width: 200px;
+  max-height: 200px;
+}
