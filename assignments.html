@@ -15,28 +15,103 @@
     <link rel="stylesheet" href="assignments.css" />
   </head>
   <body>
-    <p>Last Updated: <span id="last-updated"></span></p>
-    <section>
-      <header>
-        <a href="index.html" class="logo">Alisher<span>Izmukhan</span></a>
-        <div class="toggle"></div>
-      </header>
+
+    <header>
+      <a href="index.html" class="logo">Alisher<span>Izmukhan</span></a>
+      <div class="toggle"></div>
+
+    </header>
+    <ul class="navigation"></ul>
+
+    <!-- Banner -->
+    <section class="banner">
+      <img src="banner.jpg" class="cover" />
+      <div class="contentBx">
+        <h2>WCS 240</h2>
+        <h4>Scroll down for view assignments</h4>
+        <a href="#existingAssigns" class="btn">Start</a>
+      </div>
     </section>
+    <!-- First Ass -->
+    <div class="container mt-4" id="existingAssigns"></div>
+
     <script>
-      let banner = document.querySelector(".banner");
+      let navigation = document.querySelector(".navigation");
       let menutoggle = document.querySelector(".toggle");
       menutoggle.onclick = function () {
         menutoggle.classList.toggle("active");
-        banner.classList.toggle("active");
+        navigation.classList.toggle("active");
       };
-    </script>
 
-    <div class="container mt-4" id="existingAssigns"></div>
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+      });
+
+      document.addEventListener("click", function (event) {
+        if (event.target.tagName == "A") {
+          const targetId = event.target.getAttribute("href").substring(1);
+          const targetSection = document.getElementById(targetId);
+
+          if (targetSection) {
+            event.preventDefault();
+            targetSection.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      });
+    </script>
 
     <!-- Include Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    <script src="ass.js"></script>
+    <script>
+      const baseUrl = "https://wcs-alisher-izmukhan.koyeb.app"; // Update this with your actual base URL
+
+      async function getExistingAssigns() {
+        const response = await fetch(`${baseUrl}/assigns`);
+        const assigns = await response.json();
+
+        const existingAssignsList = document.getElementById("existingAssigns");
+        const navigationList = document.querySelector(".navigation");
+
+        existingAssignsList.innerHTML = "";
+        navigationList.innerHTML = "";
+
+        assigns.forEach((assign) => {
+          const cardDiv = document.createElement("div");
+          cardDiv.className = "col";
+          cardDiv.innerHTML = `
+                <div class="card">
+                    <div class="card-body">
+                        <span class="card-text" id="${assign.id}">${assign.id}</span>
+                        <h5 class="card-title">${assign.title}</h5>
+                        <div class="ql-editor">${assign.content}</div>
+                        <p class="card-text"><small class="text-muted">Last updated: ${assign.time}</small></p>
+                    </div>
+                </div>`;
+
+          existingAssignsList.appendChild(cardDiv);
+
+          const navItem = document.createElement("li");
+          navItem.innerHTML = `<a href="#${assign.id}">${assign.title}</a>`;
+          navigationList.appendChild(navItem);
+        });
+      }
+
+      // Fetch and display existing assigns when the page loads
+      window.onload = function () {
+        getExistingAssigns();
+
+        // If there is a specific assignment in the URL, scroll to it
+        const hash = window.location.hash;
+        if (hash) {
+          const targetSection = document.getElementById(hash.substring(1));
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      };
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-beta.0/dist/quill.js"></script>
   </body>
 </html>
