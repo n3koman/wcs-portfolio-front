@@ -15,11 +15,9 @@
     <link rel="stylesheet" href="assignments.css" />
   </head>
   <body>
-
     <header>
       <a href="index.html" class="logo">Alisher<span>Izmukhan</span></a>
       <div class="toggle"></div>
-
     </header>
     <ul class="navigation"></ul>
 
@@ -41,6 +39,11 @@
       menutoggle.onclick = function () {
         menutoggle.classList.toggle("active");
         navigation.classList.toggle("active");
+      };
+
+      navigation.onclick = function () {
+        menutoggle.classList.remove("active");
+        navigation.classList.remove("active");
       };
 
       window.addEventListener("scroll", function () {
