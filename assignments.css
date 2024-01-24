@@ -164,4 +164,23 @@ section {
 div img {
   max-width: 200px;
   max-height: 200px;
+  flex-wrap: wrap;
+  display: flex;
+}
+.text-muted
+{
+  font-size: 17px;
+  color: #777;
+}
+.custom-ql-editor img {
+  max-width: 100%;
+  height: auto;
+  float:left;
+  margin: 0 10px 10px 0;
+}
+.custom-ql-editor {
+  max-width: 100%;
+  height: auto;
+  float:left;
+  margin: 0 10px 10px 0;
 }

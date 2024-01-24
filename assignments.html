@@ -81,6 +81,21 @@
         navigationList.innerHTML = "";
 
         assigns.forEach((assign) => {
+          const updateTime = new Date(assign.time);
+          const options = {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            timeZoneName: "short",
+          };
+          const formattedUpdateTime = updateTime.toLocaleString(
+            "en-US",
+            options
+          );
+
           const cardDiv = document.createElement("div");
           cardDiv.className = "col";
           cardDiv.innerHTML = `
@@ -88,8 +103,8 @@
                     <div class="card-body">
                         <span class="card-text" id="${assign.id}">${assign.id}</span>
                         <h5 class="card-title">${assign.title}</h5>
-                        <div class="ql-editor">${assign.content}</div>
-                        <p class="card-text"><small class="text-muted">Last updated: ${assign.time}</small></p>
+                        <div class="ql-editor custom-ql-editor">${assign.content}</div>
+                        <p class="card-text"><small class="text-muted">Last updated: ${formattedUpdateTime}</small></p>
                     </div>
                 </div>`;
 
@@ -104,7 +119,6 @@
       // Fetch and display existing assigns when the page loads
       window.onload = function () {
         getExistingAssigns();
-
         // If there is a specific assignment in the URL, scroll to it
         const hash = window.location.hash;
         if (hash) {
