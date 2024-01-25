@@ -184,3 +184,32 @@ div img {
   float:left;
   margin: 0 10px 10px 0;
 }
+
+@media (max-width: 991px) {
+  section {
+    padding: 40px;
+  }
+  header {
+    padding: 20px 40px;
+  }
+  section::before {
+    opacity: 0;
+  }
+  .me {
+    right: -100px;
+    opacity: 0.3;
+  }
+  .content .contentBx a {
+    margin-bottom: 10px;
+  }
+  .menu{
+    padding-left: 0;
+    align-items: center;
+  }
+  .content .contentBx h2{
+    font-size: 2.2em;
+  }
+  .content .contentBx h3{
+    font-size: 1.5em;
+  }
+}
