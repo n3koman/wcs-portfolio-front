@@ -162,8 +162,8 @@ section {
   margin-top: 50px;
 }
 div img {
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 500px;
+  max-height: 500px;
   flex-wrap: wrap;
   display: flex;
 }
