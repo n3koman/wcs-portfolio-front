@@ -60,6 +60,31 @@ header .toggle.active {
 header.sticky {
   padding: 10px 100px;
 }
+.card {
+  max-width: 400px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 16px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.card h2 {
+  color: #333;
+}
+
+.card p {
+  color: #666;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: 8px;
+}
 .navigation {
   position: fixed;
   top: 0;
@@ -171,17 +196,16 @@ div img {
   font-size: 17px;
   color: #777;
 }
-.custom-ql-editor img:nth-child(1) {
+.custom-ql-editor img {
   max-width: 100%;
   height: auto;
   float: left;
   margin: 0 10px 10px 0;
 }
-
-.custom-ql-editor img:nth-child(0) {
+.custom-ql-editor {
   max-width: 100%;
   height: auto;
-  float: right;
+  float: left;
   margin: 0 10px 10px 0;
 }
 
