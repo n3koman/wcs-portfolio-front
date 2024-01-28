@@ -1,11 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alisher Izmukhan</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <section class="banner">
+      <header>
+        <a href="#" class="logo">Alisher<span>Izmukhan</span></a>
+        <div class="toggle"></div>
+      </header>
+      <img src="sorry.jpg" class="m">
+      <div class="content">
+      </div>
+      <ul class="menu">
+        <li><a href="index.html">Home Page</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="assignments.html">Assignments</a></li>
+        <!-- <li><a href="#">About me</a></li> -->
+      </ul>
+    </section>
+    <script>
+      let banner = document.querySelector('.banner');
+      let menutoggle = document.querySelector('.toggle');
+      menutoggle.onclick = function(){
+        menutoggle.classList.toggle('active');
+        banner.classList.toggle('active');
+      }
+    </script>
+  </body>
 </html>
