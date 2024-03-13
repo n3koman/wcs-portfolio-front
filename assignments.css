@@ -167,6 +167,12 @@ div img {
   flex-wrap: wrap;
   display: flex;
 }
+.container video{
+  max-width: 1000px;
+  max-height: 1000px;
+  flex-wrap: wrap;
+  display: flex;
+}
 .text-muted {
   font-size: 17px;
   color: #777;
